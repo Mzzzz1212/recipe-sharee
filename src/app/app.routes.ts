@@ -12,7 +12,6 @@ export const routes: Routes = [
   {
     path: "recipes/:id",
     loadComponent: () => import("./pages/recipe-detail/recipe-detail.component").then((m) => m.RecipeDetailComponent),
-    data: {renderMode: 'no-prerender'}
   },
   {
     path: "add-recipe",
