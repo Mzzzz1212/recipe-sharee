@@ -1,34 +1,25 @@
-import {Routes} from '@angular/router';
-import {HomeComponent} from './pages/home/home.component';
-import {RecipeListComponent} from './pages/recipe-list/recipe-list.component';
-import {RecipeDetailComponent} from './pages/recipe-detail/recipe-detail.component';
-import {AddRecipeComponent} from './pages/add-recipe/add-recipe.component';
+import type {Routes} from "@angular/router"
 
 export const routes: Routes = [
   {
     path: "",
-    component: HomeComponent,
+    loadComponent: () => import("./pages/home/home.component").then((m) => m.HomeComponent),
   },
   {
     path: "recipes",
-    component: RecipeListComponent,
+    loadComponent: () => import("./pages/recipe-list/recipe-list.component").then((m) => m.RecipeListComponent),
   },
   {
-    path: "recipe/:id",
-    component: RecipeDetailComponent,
-    providers: [
-      {
-        provide: 'ngRouteProcessorPrerender',
-        useValue: false,
-      }
-    ]
+    path: "recipes/:id",
+    loadComponent: () => import("./pages/recipe-detail/recipe-detail.component").then((m) => m.RecipeDetailComponent),
   },
   {
     path: "add-recipe",
-    component: AddRecipeComponent,
+    loadComponent: () => import("./pages/add-recipe/add-recipe.component").then((m) => m.AddRecipeComponent),
   },
   {
     path: "**",
-    redirectTo: "**"
-  }
-];
+    redirectTo: "",
+  },
+]
+
