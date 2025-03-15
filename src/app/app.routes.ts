@@ -16,6 +16,12 @@ export const routes: Routes = [
   {
     path: "recipe/:id",
     component: RecipeDetailComponent,
+    providers: [
+      {
+        provide: 'ngRouteProcessorPrerender',
+        useValue: false,
+      }
+    ]
   },
   {
     path: "add-recipe",
