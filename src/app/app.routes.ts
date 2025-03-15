@@ -12,12 +12,7 @@ export const routes: Routes = [
   {
     path: "recipes/:id",
     loadComponent: () => import("./pages/recipe-detail/recipe-detail.component").then((m) => m.RecipeDetailComponent),
-    providers: [
-      {
-        provide: 'ngRouteProcessorPrerender',
-        useValue: false
-      }
-    ]
+    data: {renderMode: 'no-prerender'}
   },
   {
     path: "add-recipe",
